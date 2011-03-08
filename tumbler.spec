@@ -84,7 +84,7 @@ Dokumentacja API biblioteki tumbler.
 %build
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
-	--disable-debug
+	--enable-debug=minimum
 
 %{__make}
 
