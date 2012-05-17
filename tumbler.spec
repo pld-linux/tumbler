@@ -111,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
