@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/tumbler-1/plugins/{cache,}/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/tumbler-1/plugins/{cache,}/*.la
 
 %find_lang %{name}
 
