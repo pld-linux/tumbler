@@ -54,18 +54,6 @@ Header files for tumbler library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki tumbler.
 
-%package static
-Summary:	Static tumbler library
-Summary(pl.UTF-8):	Statyczna biblioteka tumbler
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static tumbler library.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka tumbler.
-
 %package apidocs
 Summary:	tumbler API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki timpler
@@ -131,10 +119,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libtumbler-1.so
 %{_includedir}/tumbler-1
 %{_pkgconfigdir}/tumbler-1.pc
-
-%files static
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libtumbler-1.a
 
 %files apidocs
 %defattr(644,root,root,755)
