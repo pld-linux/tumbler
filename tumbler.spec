@@ -12,10 +12,14 @@ BuildRequires:	dbus-devel >= 1.0.0
 BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel
+BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc
 BuildRequires:	libjpeg-devel
+BuildRequires:	libgsf-devel
+BuildRequires:	libopenraw-gnome-devel
 BuildRequires:	libpng-devel
 BuildRequires:	poppler-glib-devel >= 0.12.0
 Requires:	%{name}-libs = %{version}-%{release}
@@ -102,8 +106,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/tumblerd
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
