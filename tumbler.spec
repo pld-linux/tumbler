@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	0.1.25
-Release:	4
+Version:	0.1.27
+Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://archive.xfce.org/src/xfce/tumbler/0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	d4edc15c172714c7a3eaf3c719b8faf6
+# Source0-md5:	3fa90528c3e7e77d8ace4bffcf0a2748
 URL:		http://www.xfce.org/
 BuildRequires:	dbus-devel >= 1.0.0
 BuildRequires:	dbus-glib-devel >= 0.72
@@ -17,8 +17,8 @@ BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc
-BuildRequires:	libjpeg-devel
 BuildRequires:	libgsf-devel
+BuildRequires:	libjpeg-devel
 BuildRequires:	libopenraw-gnome-devel
 BuildRequires:	libpng-devel
 BuildRequires:	poppler-glib-devel >= 0.12.0
@@ -75,6 +75,7 @@ Dokumentacja API biblioteki tumbler.
 
 %build
 %configure \
+	--disable-silent-rules \
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-debug=minimum
 
@@ -82,7 +83,6 @@ Dokumentacja API biblioteki tumbler.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -100,20 +100,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
+%dir /etc/xdg/tumbler
+%config(noreplace) %verify(not md5 mtime size) /etc/xdg/tumbler/tumbler.rc
 %dir %{_libdir}/tumbler-1
 %dir %{_libdir}/tumbler-1/plugins
 %dir %{_libdir}/tumbler-1/plugins/cache
 %attr(755,root,root) %{_libdir}/tumbler-1/tumblerd
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-cover-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
 
 %files libs -f %{name}.lang
