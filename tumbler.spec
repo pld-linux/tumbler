@@ -13,14 +13,17 @@ BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel
 BuildRequires:	gdk-pixbuf2-devel
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gstreamer-devel
-BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gstreamer-plugins-base-devel
 BuildRequires:	gtk-doc
+BuildRequires:	intltool
 BuildRequires:	libgsf-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libopenraw-gnome-devel
 BuildRequires:	libpng-devel
+BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel >= 0.12.0
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus >= 1.0.0
