@@ -2,7 +2,7 @@ Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
 Version:	0.1.29
-Release:	5
+Release:	6
 License:	GPL v2
 Group:		Applications
 Source0:	http://archive.xfce.org/src/xfce/tumbler/0.1/%{name}-%{version}.tar.bz2
@@ -66,6 +66,9 @@ Summary:	tumbler API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki timpler
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 tumpler API documentation.
