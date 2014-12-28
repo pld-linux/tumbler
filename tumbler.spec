@@ -14,7 +14,7 @@ BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel
 BuildRequires:	gdk-pixbuf2-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gstreamer-devel
 BuildRequires:	gstreamer-plugins-base-devel
