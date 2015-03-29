@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	0.1.30
-Release:	3
+Version:	0.1.31
+Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://archive.xfce.org/src/xfce/tumbler/0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	2524e39439c13238565160da0b6fed2d
+# Source0-md5:	0067054e6f1f90a13f90faadfca1e89e
 URL:		http://www.xfce.org/
 BuildRequires:	curl-devel >= 7.25
 BuildRequires:	dbus-devel >= 1.0.0
@@ -15,7 +15,7 @@ BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	gstreamer-devel
 BuildRequires:	gstreamer-plugins-base-devel
 BuildRequires:	gtk-doc
