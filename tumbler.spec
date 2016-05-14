@@ -2,32 +2,40 @@ Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
 Version:	0.1.31
-Release:	2
+Release:	3
 License:	GPL v2
-Group:		Applications
+Group:		Applications/Graphics
 Source0:	http://archive.xfce.org/src/xfce/tumbler/0.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	0067054e6f1f90a13f90faadfca1e89e
 URL:		http://www.xfce.org/
+BuildRequires:	autoconf >= 2.60
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	curl-devel >= 7.25
 BuildRequires:	dbus-devel >= 1.0.0
 BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
-BuildRequires:	freetype-devel
-BuildRequires:	gdk-pixbuf2-devel
+BuildRequires:	freetype-devel >= 2
+BuildRequires:	gdk-pixbuf2-devel >= 2.14
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gstreamer-devel
-BuildRequires:	gstreamer-plugins-base-devel
-BuildRequires:	gtk-doc
-BuildRequires:	intltool
-BuildRequires:	libgsf-devel
+BuildRequires:	gstreamer-devel >= 1.0
+BuildRequires:	gstreamer-plugins-base-devel >= 1.0
+BuildRequires:	gtk-doc >= 1.9
+BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libgsf-devel >= 1.14.9
 BuildRequires:	libjpeg-devel
-BuildRequires:	libopenraw-gnome-devel
-BuildRequires:	libpng-devel
+BuildRequires:	libopenraw-gnome-devel >= 0.0.4
+BuildRequires:	libpng-devel >= 1.2.0
+BuildRequires:	libtool >= 2:2.4
 BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel >= 0.12.0
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus >= 1.0.0
+Requires:	gdk-pixbuf2 >= 2.14
+Requires:	ffmpegthumbnailer >= 2.0.0
+Requires:	libgsf >= 1.14.9
+Requires:	libopenraw-gnome >= 0.0.4
+Requires:	poppler-glib >= 0.12.0
 Provides:	dbus(org.xfce.Tumbler.Cache1.service)
 Provides:	dbus(org.xfce.Tumbler.Manager1.service)
 Provides:	dbus(org.xfce.Tumbler.Thumbnailer1.service)
@@ -81,10 +89,17 @@ Dokumentacja API biblioteki tumbler.
 %setup -q
 
 %build
+install -d m4
+%{__intltoolize}
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
+	--enable-debug=minimum \
 	--disable-silent-rules \
-	--with-html-dir=%{_gtkdocdir} \
-	--enable-debug=minimum
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
