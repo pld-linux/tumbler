@@ -2,11 +2,12 @@ Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
 Version:	0.1.31
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/Graphics
 Source0:	http://archive.xfce.org/src/xfce/tumbler/0.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	0067054e6f1f90a13f90faadfca1e89e
+Patch0:		%{name}-libopenraw.patch
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -24,7 +25,7 @@ BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libgsf-devel >= 1.14.9
 BuildRequires:	libjpeg-devel
-BuildRequires:	libopenraw-gnome-devel >= 0.0.4
+BuildRequires:	libopenraw-gnome-devel >= 0.1.0
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool >= 2:2.4
 BuildRequires:	pkgconfig
@@ -34,7 +35,7 @@ Requires:	dbus >= 1.0.0
 Requires:	gdk-pixbuf2 >= 2.14
 Requires:	ffmpegthumbnailer >= 2.0.0
 Requires:	libgsf >= 1.14.9
-Requires:	libopenraw-gnome >= 0.0.4
+Requires:	libopenraw-gnome >= 0.1.0
 Requires:	poppler-glib >= 0.12.0
 Provides:	dbus(org.xfce.Tumbler.Cache1.service)
 Provides:	dbus(org.xfce.Tumbler.Manager1.service)
@@ -87,6 +88,7 @@ Dokumentacja API biblioteki tumbler.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 install -d m4
