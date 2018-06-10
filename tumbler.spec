@@ -1,13 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	0.1.31
-Release:	4
+Version:	0.2.1
+Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	http://archive.xfce.org/src/xfce/tumbler/0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	0067054e6f1f90a13f90faadfca1e89e
-Patch0:		%{name}-libopenraw.patch
+Source0:	http://archive.xfce.org/src/xfce/tumbler/0.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	45066628b7013fee752d3c671863fb31
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -88,7 +87,6 @@ Dokumentacja API biblioteki tumbler.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 install -d m4
@@ -133,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-cover-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-desktop-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
