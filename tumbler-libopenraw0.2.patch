@@ -1,0 +1,17 @@
+--- tumbler-0.3.0/acinclude.m4.orig	2020-08-06 13:53:57.000000000 +0200
++++ tumbler-0.3.0/acinclude.m4	2020-10-18 16:01:49.419470593 +0200
+@@ -216,12 +216,14 @@
+   dnl Check for gdk-pixbuf
+   PKG_CHECK_MODULES([GDK_PIXBUF], [gdk-pixbuf-2.0 >= 2.14],
+   [
++   PKG_CHECK_MODULES([LIBOPENRAW_GNOME], [libopenraw-gnome-0.2 >= 0.2.0], [],[
+     dnl Check for libopenraw
+     dnl Note: 0.1.0 release changed the pkg-config name from -1.0 to -0.1
+     PKG_CHECK_MODULES([LIBOPENRAW_GNOME], [libopenraw-gnome-0.1 >= 0.0.4], [],
+     [
+       PKG_CHECK_MODULES([LIBOPENRAW_GNOME], [libopenraw-gnome-1.0 >= 0.0.4], [], [ac_tumbler_raw_thumbnailer=no])
+     ])
++   ])
+   ], [ac_tumbler_raw_thumbnailer=no])
+ fi
+ 
