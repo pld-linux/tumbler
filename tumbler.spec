@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	0.3.0
-Release:	2
+Version:	4.16.0
+Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	https://archive.xfce.org/src/xfce/tumbler/0.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	b7408f75ca192555ceae0613b982bd1d
+Source0:	https://archive.xfce.org/src/xfce/tumbler/4.16/%{name}-%{version}.tar.bz2
+# Source0-md5:	3ab8fc5ea03e975c6df2ac1c81fbfc68
 Patch0:		%{name}-libopenraw0.2.patch
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
@@ -18,7 +18,7 @@ BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	gdk-pixbuf2-devel >= 2.14
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.30.0
+BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.9
@@ -32,8 +32,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel >= 0.12.0
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus >= 1.0.0
-Requires:	gdk-pixbuf2 >= 2.14
 Requires:	ffmpegthumbnailer >= 2.0.0
+Requires:	gdk-pixbuf2 >= 2.14
 Requires:	libgsf >= 1.14.9
 Requires:	libopenraw-gnome >= 0.1.0
 Requires:	poppler-glib >= 0.12.0
@@ -128,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS TODO
 %dir /etc/xdg/tumbler
 %config(noreplace) %verify(not md5 mtime size) /etc/xdg/tumbler/tumbler.rc
 %dir %{_libdir}/tumbler-1
@@ -148,6 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
+%{_iconsdir}/hicolor/32x32/apps/org.xfce.tumbler.png
 
 %files libs -f %{name}.lang
 %defattr(644,root,root,755)
