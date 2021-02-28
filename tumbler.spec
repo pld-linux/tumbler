@@ -76,9 +76,7 @@ Summary:	tumbler API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki timpler
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 tumpler API documentation.
