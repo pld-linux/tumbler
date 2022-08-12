@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	4.16.0
+Version:	4.16.1
 Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
 Source0:	https://archive.xfce.org/src/xfce/tumbler/4.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	3ab8fc5ea03e975c6df2ac1c81fbfc68
+# Source0-md5:	28b699573a08d0494bc0517b755702b8
 Patch0:		%{name}-libopenraw0.2.patch
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
@@ -23,6 +23,7 @@ BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libgepub-devel
 BuildRequires:	libgsf-devel >= 1.14.9
 BuildRequires:	libjpeg-devel
 BuildRequires:	libopenraw-gnome-devel >= 0.1.0
@@ -139,6 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-desktop-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
+%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
