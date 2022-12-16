@@ -1,13 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	4.16.1
+Version:	4.18.0
 Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	https://archive.xfce.org/src/xfce/tumbler/4.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	28b699573a08d0494bc0517b755702b8
-Patch0:		%{name}-libopenraw0.2.patch
+Source0:	https://archive.xfce.org/src/xfce/tumbler/4.18/%{name}-%{version}.tar.bz2
+# Source0-md5:	ffe40a16548e524bb50cfdf9267f38a7
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -16,9 +15,9 @@ BuildRequires:	dbus-devel >= 1.0.0
 BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel >= 2
-BuildRequires:	gdk-pixbuf2-devel >= 2.14
+BuildRequires:	gdk-pixbuf2-devel >= 2.36.2
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	glib2-devel >= 1:2.56.0
 BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.9
@@ -29,12 +28,13 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libopenraw-gnome-devel >= 0.1.0
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool >= 2:2.4
+BuildRequires:	libxfce4util-devel >= 4.18.0
 BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel >= 0.12.0
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus >= 1.0.0
 Requires:	ffmpegthumbnailer >= 2.0.0
-Requires:	gdk-pixbuf2 >= 2.14
+Requires:	gdk-pixbuf2 >= 2.36.2
 Requires:	libgsf >= 1.14.9
 Requires:	libopenraw-gnome >= 0.1.0
 Requires:	poppler-glib >= 0.12.0
@@ -87,7 +87,6 @@ Dokumentacja API biblioteki tumbler.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 install -d m4
@@ -127,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS TODO
+%doc AUTHORS ChangeLog NEWS README.md
 %dir /etc/xdg/tumbler
 %config(noreplace) %verify(not md5 mtime size) /etc/xdg/tumbler/tumbler.rc
 %dir %{_libdir}/tumbler-1
@@ -140,7 +139,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-desktop-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
+# temporary (?) problems with libarchive
+#%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
@@ -148,6 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
+%{systemduserunitdir}/tumblerd.service
 %{_iconsdir}/hicolor/32x32/apps/org.xfce.tumbler.png
 
 %files libs -f %{name}.lang
