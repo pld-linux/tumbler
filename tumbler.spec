@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	4.18.1
+Version:	4.18.2
 Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
 Source0:	https://archive.xfce.org/src/xfce/tumbler/4.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	e66ff221ea5cd19c84ce80abca033f52
+# Source0-md5:	576ff73eb77530b001e36d565544a7f6
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -148,7 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
 %{systemduserunitdir}/tumblerd.service
-%{_iconsdir}/hicolor/32x32/apps/org.xfce.tumbler.png
+%{_iconsdir}/hicolor/*x*/apps/org.xfce.tumbler.png
 
 %files libs -f %{name}.lang
 %defattr(644,root,root,755)
