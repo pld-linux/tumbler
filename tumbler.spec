@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	4.18.2
+Version:	4.20.0
 Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	https://archive.xfce.org/src/xfce/tumbler/4.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	576ff73eb77530b001e36d565544a7f6
+Source0:	https://archive.xfce.org/src/xfce/tumbler/4.20/%{name}-%{version}.tar.bz2
+# Source0-md5:	8746afe5822d3564a5cd43945d488db7
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -17,7 +17,7 @@ BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.2
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.9
@@ -28,7 +28,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libopenraw-gnome-devel >= 0.1.0
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool >= 2:2.4
-BuildRequires:	libxfce4util-devel >= 4.18.0
+BuildRequires:	libxfce4util-devel >= 4.20.0
 BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel >= 0.12.0
 Requires:	%{name}-libs = %{version}-%{release}
@@ -90,7 +90,6 @@ Dokumentacja API biblioteki tumbler.
 
 %build
 install -d m4
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
