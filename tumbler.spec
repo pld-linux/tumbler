@@ -1,12 +1,12 @@
 Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
-Version:	4.20.1
-Release:	2
+Version:	4.20.2
+Release:	1
 License:	GPL v2
 Group:		Applications/Graphics
 Source0:	https://archive.xfce.org/src/xfce/tumbler/4.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	7d315af732b1232d663b03149d7c82a4
+# Source0-md5:	544cd05cf6ec8d16c8c812529d09b34b
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -132,31 +132,31 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/tumbler-1/plugins
 %dir %{_libdir}/tumbler-1/plugins/cache
 %attr(755,root,root) %{_libdir}/tumbler-1/tumblerd
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-cover-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-desktop-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
-%attr(755,root,root) %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
+%{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
+%{_libdir}/tumbler-1/plugins/tumbler-cover-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-desktop-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-font-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-gst-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-jpeg-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
 %{systemduserunitdir}/tumblerd.service
 %{_iconsdir}/hicolor/*x*/apps/org.xfce.tumbler.png
 
 %files libs -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libtumbler-1.so.0.0.0
-%attr(755,root,root) %ghost %{_libdir}/libtumbler-1.so.0
+%{_libdir}/libtumbler-1.so.0.0.0
+%ghost %{_libdir}/libtumbler-1.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libtumbler-1.so
+%{_libdir}/libtumbler-1.so
 %{_includedir}/tumbler-1
 %{_pkgconfigdir}/tumbler-1.pc
 
