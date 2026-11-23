@@ -2,27 +2,28 @@ Summary:	D-Bus service for applications to request thumbnails
 Summary(pl.UTF-8):	Serwis D-Bus do udostępniania miniaturek
 Name:		tumbler
 Version:	4.20.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/Graphics
 Source0:	https://archive.xfce.org/src/xfce/tumbler/4.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	544cd05cf6ec8d16c8c812529d09b34b
 URL:		https://www.xfce.org/
-BuildRequires:	autoconf >= 2.60
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	curl-devel >= 7.25
+BuildRequires:	curl-devel >= 7.32.0
 BuildRequires:	dbus-devel >= 1.0.0
 BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	ffmpegthumbnailer-devel >= 2.0.0
 BuildRequires:	freetype-devel >= 2
-BuildRequires:	gdk-pixbuf2-devel >= 2.36.2
-BuildRequires:	gettext-tools
+BuildRequires:	gdk-pixbuf2-devel >= 2.42.8
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libgepub-devel
+# or 0.7.0
+BuildRequires:	libgepub-devel >= 0.6.0
 BuildRequires:	libgsf-devel >= 1.14.9
 BuildRequires:	libjpeg-devel
 BuildRequires:	libopenraw-gnome-devel >= 0.1.0
@@ -31,13 +32,15 @@ BuildRequires:	libtool >= 2:2.4
 BuildRequires:	libxfce4util-devel >= 4.20.0
 BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel >= 0.12.0
-Requires:	%{name}-libs = %{version}-%{release}
+BuildRequires:	rpmbuild(macros) >= 1.682
+Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
+Requires:	curl-libs%{?_isa} >= 7.32.0
 Requires:	dbus >= 1.0.0
-Requires:	ffmpegthumbnailer >= 2.0.0
-Requires:	gdk-pixbuf2 >= 2.36.2
-Requires:	libgsf >= 1.14.9
-Requires:	libopenraw-gnome >= 0.1.0
-Requires:	poppler-glib >= 0.12.0
+Requires:	ffmpegthumbnailer%{?_isa} >= 2.0.0
+Requires:	gdk-pixbuf2%{?_isa} >= 2.42.8
+Requires:	libgsf%{?_isa} >= 1.14.9
+Requires:	libopenraw-gnome%{?_isa} >= 0.1.0
+Requires:	poppler-glib%{?_isa} >= 0.12.0
 Provides:	dbus(org.xfce.Tumbler.Cache1.service)
 Provides:	dbus(org.xfce.Tumbler.Manager1.service)
 Provides:	dbus(org.xfce.Tumbler.Thumbnailer1.service)
@@ -53,6 +56,8 @@ Serwis D-Bus do udostępniania miniaturek.
 Summary:	Tumbler shared library
 Summary(pl.UTF-8):	Biblioteka tumbler
 Group:		Libraries
+Requires:	glib2%{?_isa} >= 1:2.72.0
+Requires:	libxfce4util%{?_isa} >= 4.20.0
 
 %description libs
 Tumbler shared library.
@@ -64,7 +69,8 @@ Biblioteka tumbler.
 Summary:	Header files for tumbler library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki tumbler
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
+Requires:	glib2-devel%{?_isa} >= 1:2.72.0
 
 %description devel
 Header files for tumbler library.
@@ -89,7 +95,6 @@ Dokumentacja API biblioteki tumbler.
 %setup -q
 
 %build
-install -d m4
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -129,11 +134,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir /etc/xdg/tumbler
 %config(noreplace) %verify(not md5 mtime size) /etc/xdg/tumbler/tumbler.rc
 %dir %{_libdir}/tumbler-1
-%dir %{_libdir}/tumbler-1/plugins
-%dir %{_libdir}/tumbler-1/plugins/cache
 %attr(755,root,root) %{_libdir}/tumbler-1/tumblerd
-%{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
-%{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
+%dir %{_libdir}/tumbler-1/plugins
 %{_libdir}/tumbler-1/plugins/tumbler-cover-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-desktop-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-ffmpeg-thumbnailer.so
@@ -145,6 +147,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
+%dir %{_libdir}/tumbler-1/plugins/cache
+%{_libdir}/tumbler-1/plugins/cache/tumbler-cache-plugin.so
+%{_libdir}/tumbler-1/plugins/cache/tumbler-xdg-cache.so
 %{_datadir}/dbus-1/services/org.xfce.Tumbler.*.service
 %{systemduserunitdir}/tumblerd.service
 %{_iconsdir}/hicolor/*x*/apps/org.xfce.tumbler.png
